@@ -1,10 +1,6 @@
-import dynamic from 'next/dynamic';
-import { Grid, Box, Container } from "@mui/material";
-import 'swiper/css'; // Estilos básicos do Swiper
 
-// Importando o Swiper dinamicamente para evitar SSR (Server Side Rendering)
-const Swiper = dynamic(() => import('swiper/react').then(mod => mod.Swiper), { ssr: false });
-const SwiperSlide = dynamic(() => import('swiper/react').then(mod => mod.SwiperSlide), { ssr: false });
+import { Grid, Box, Container, Typography } from "@mui/material";
+import CustomButton from "../Button";
 
 export default function ProductsSection() {
     return (
@@ -12,33 +8,23 @@ export default function ProductsSection() {
             <Container fixed sx={{ mb: '80px' }}>
                 <Grid container spacing={2} justifyContent="center">
                     {/* Primeira coluna (Imagem maior com Swiper) */}
+
+                    <Grid xs={12}>
+                        <Typography sx={{fontSize: '30px', textAlign: 'center', mb: '30px'}}>
+                            Conheça nossos produtos
+                        </Typography>
+                    </Grid>
                     <Grid item xs={12} sm={6} md={4}>
-                        <Swiper spaceBetween={10} slidesPerView={1} loop={true}>
-                            <SwiperSlide>
                                 <Box
                                     component="img"
-                                    src="https://www.xbzbrindes.com.br/img/banner/66e4396d132aabannersdestaqueslide__08106_567%20x%20617%20px_teste%202.jpg"
+                                    src="https://www.xbzbrindes.com.br/img/banner/66fc0d6a2492dbannersdestaqueslidelarge-07077_567%20x%20617%20px.jpg"
                                     alt="Image 1"
                                     sx={{
                                         width: '100%',
-                                        height: 'auto',
+                                        height: '404px',
                                         borderRadius: '16px',
                                     }}
                                 />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <Box
-                                    component="img"
-                                    src="https://www.xbzbrindes.com.br/img/banner/66e4396d32499bannersdestaqueslide18781_567%20x%20617%20px.jpg"
-                                    alt="Image 1 Slide 2"
-                                    sx={{
-                                        width: '100%',
-                                        height: 'auto',
-                                        borderRadius: '16px',
-                                    }}
-                                />
-                            </SwiperSlide>
-                        </Swiper>
                     </Grid>
 
                     {/* Segunda coluna (Imagens menores empilhadas) */}
@@ -85,32 +71,22 @@ export default function ProductsSection() {
 
                     {/* Terceira coluna (Imagem maior com Swiper) */}
                     <Grid item xs={12} md={4}>
-                        <Swiper spaceBetween={10} slidesPerView={1} loop={true}>
-                            <SwiperSlide>
                                 <Box
                                     component="img"
-                                    src="https://www.xbzbrindes.com.br/img/banner/66e4396d32499bannersdestaqueslide18781_567%20x%20617%20px.jpg"
+                                    src="https://www.xbzbrindes.com.br/img/banner/66fc0d6a0bc7abannersdestaqueslidelarge-08041_567%20x%20617%20px.jpg"
                                     alt="Image 5"
                                     sx={{
                                         width: '100%',
-                                        height: 'auto',
+                                        height: '404px',
                                         borderRadius: '16px',
                                     }}
                                 />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <Box
-                                    component="img"
-                                    src="https://www.xbzbrindes.com.br/img/banner/66e4396d132aabannersdestaqueslide__08106_567%20x%20617%20px_teste%202.jpg"
-                                    alt="Image 5 Slide 2"
-                                    sx={{
-                                        width: '100%',
-                                        height: 'auto',
-                                        borderRadius: '16px',
-                                    }}
-                                />
-                            </SwiperSlide>
-                        </Swiper>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                            <CustomButton>
+                                Baixar catálogo
+                            </CustomButton>
                     </Grid>
                 </Grid>
             </Container>
