@@ -11,8 +11,8 @@ export default function Home() {
   return (
     <>
     <Header />
-    <AboutSection />
-    <CreateSection />
+    {/* <AboutSection /> */}
+    {/* <CreateSection /> */}
     <ProductsSection />
     <CategoryCarousel/>
     <ReviewsSection/>

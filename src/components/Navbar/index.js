@@ -50,7 +50,7 @@ export default function Navbar() {
                 sx={{
                     height: '70px',
                     width: '100%',
-                    bgcolor: scrollPosition > 0 ? '#A92529' : 'transparent',
+                    bgcolor: '#A92529',
                     transition: 'background-color 0.3s ease',
                     boxShadow: 'none',
                 }}
