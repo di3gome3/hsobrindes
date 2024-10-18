@@ -2,25 +2,38 @@
 import React, { useRef, useEffect } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation'; // Import navigation styles
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import CustomButton from '../Button';
+import Link from 'next/link'
 
 const categories = [
-  { name: 'Bolsas', image: 'https://www.xbzbrindes.com.br/img/produtos/3/Mochila-de-Nylon-Dobravel-23-Litros-20546-1728313106.jpg' },
-  { name: 'Bolsas', image: 'https://www.xbzbrindes.com.br/img/produtos/3/Mochila-de-Nylon-Dobravel-23-Litros-PRETO-20550-1728313111.jpg' },
-  { name: 'Bolsas', image: 'https://www.xbzbrindes.com.br/timthumb/timthumb.php?src=/img/produtos/3/Sacola-de-Nylon-18588-1710938984.jpg&w=652' },
-  { name: 'Bolsas', image: 'https://www.xbzbrindes.com.br/timthumb/timthumb.php?src=/img/produtos/3/Mini-Bolsa-Transversal-de-rPET-20827-1728309870.jpg&w=652' },
-  { name: 'Bolsas', image: 'https://www.xbzbrindes.com.br/timthumb/timthumb.php?src=/img/produtos/3/Bolsa-Esportiva-46-Litros-20290-1726661300.jpg&w=652' },
-  { name: 'Bolsas', image: 'https://www.xbzbrindes.com.br/timthumb/timthumb.php?src=/img/produtos/3/Sacola-Plastica-20553-1728071475.jpg&w=652' },
+  { name: 'Canecas', image: 'https://www.xbzbrindes.com.br/timthumb/timthumb.php?src=/img/produtos/3/Caneca-Magica-de-Ceramica-350ml-VERMELHO-13598-1637768542.jpg&w=652' },
+  { name: 'Copos', image: 'https://www.xbzbrindes.com.br/timthumb/timthumb.php?src=/img/produtos/3/Copo-de-Vidro-500ml-AZUL-19394-1718798702.jpg&w=652' },
+  { name: 'Garrafas', image: 'https://www.xbzbrindes.com.br/timthumb/timthumb.php?src=/img/produtos/3/Garrafa-Termica-1-Litro-com-Infusor-20057-1724351824.jpg&w=652' },
+  { name: 'Blocos e Cadernetas', image: 'https://www.xbzbrindes.com.br/timthumb/timthumb.php?src=/img/produtos/3/Bloco-de-Anotacao-com-Autoadesivos-e-Caneta-21009-1728333169.jpg&w=652' },
+  { name: 'Chaveiro', image: 'https://www.xbzbrindes.com.br/img/produtos/3/Chaveiro-Metal-20005d1-1723556331.jpg' },
+  { name: 'Tecnologia', image: 'https://www.xbzbrindes.com.br/img/produtos/3/Mouse-Pad-com-Suporte-Celular-e-Canetas-17812-1701350367.jpg' },
+  { name: 'Canetas', image: 'https://www.xbzbrindes.com.br/img/produtos/3/Conjunto-Caneta-e-Lapiseira-Metal-VINHO-18817-1712240409.jpg' },
+  { name: 'Escritório', image: 'https://www.xbzbrindes.com.br/timthumb/timthumb.php?src=/img/produtos/3/Kit-Escritorio-4-em-1-8070-1533664500.jpg&w=652' },
+  { name: 'Uso Pessoal', image: 'https://www.xbzbrindes.com.br/img/produtos/3/Kit-Pincel-8-pecas-21041d1-1728932098.jpg' },
+  { name: 'Bolsas e Sacolas', image: 'https://www.xbzbrindes.com.br/img/produtos/3/Sacola-rPET-Termica-10-Litros-17574d2-1699966303.jpg' },
+  { name: 'Térmicas e Necessaire', image: 'https://www.xbzbrindes.com.br/img/produtos/3/Necessaire-PU-20076d1-1724878166.jpg' },
+  { name: 'Kit Churrasco e Queijo', image: 'https://www.xbzbrindes.com.br/img/produtos/3/Kit-Queijo-2-Pecas-20833-1727877921.jpg' },
 ];
 
+
+
 const CategoryCarousel = () => {
+  const whatsappNumber = '85985536208'; // Substitua pelo número real
+
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const pdfUrl = '/pdfs/catalogo.pdf'; // Caminho correto para acessar o PDF
+
 
   useEffect(() => {
     if (prevRef.current && nextRef.current) {
@@ -29,6 +42,20 @@ const CategoryCarousel = () => {
     }
   }, []);
 
+  const handleDownloadPDF = () => {
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = 'catalogo.pdf'; // Nome do arquivo a ser baixado
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link); // Remove o link após o clique
+  };
+
+  const getWhatsAppLink = (productName) => {
+    const message = `Olá, vim pelo site e estou interessado nos produtos da categoria de ${productName}.`;
+    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  };
+
   return (
     <Container maxWidth="lg">
       <Box sx={{ textAlign: 'center', padding: '40px 0', background: '#fff', position: 'relative' }}>
@@ -36,9 +63,10 @@ const CategoryCarousel = () => {
           Categorias
         </Typography>
         <Swiper
-          modules={[Navigation]}
-          spaceBetween={20} // Espaçamento ajustado para melhor separação entre slides
+          modules={[Navigation, Autoplay]}
+          spaceBetween={20}
           slidesPerView={4}
+          autoplay={{ delay: 3000, disableOnInteraction: false }} // Configuração do autoplay (3 segundos)
           navigation={{
             prevEl: prevRef.current,
             nextEl: nextRef.current,
@@ -65,34 +93,44 @@ const CategoryCarousel = () => {
             swiper.navigation.update();
           }}
         >
-          {categories.map((category, index) => (
-            <SwiperSlide key={index}>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                }}
-              >
-                <Box
-                  sx={{
-                    width: 150, // Ajuste do tamanho da imagem
-                    height: 150,
-                    borderRadius: '50%', // Faz a imagem ficar redonda
-                    overflow: 'hidden', // Garante que a imagem fique dentro do círculo
-                    marginBottom: 2,
-                  }}
-                >
-                  <img
-                    src={category.image}
-                    alt={category.name}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                </Box>
-                <Typography variant="body1">{category.name}</Typography>
-              </Box>
-            </SwiperSlide>
-          ))}
+
+{categories.map((category, index) => (
+  <SwiperSlide key={index}>
+    <Link
+      href={getWhatsAppLink(category.name)} // Chama a função passando o nome da categoria
+      passHref
+      legacyBehavior // Garantindo que o link funcione bem como um wrapper sem breaking changes
+    >
+      <a target="_blank" style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Box
+            sx={{
+              width: 150,
+              height: 150,
+              borderRadius: '50%',
+              overflow: 'hidden',
+              marginBottom: 2,
+            }}
+          >
+            <img
+              src={category.image}
+              alt={category.name}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          </Box>
+          <Typography variant="body1">{category.name}</Typography>
+        </Box>
+      </a>
+    </Link>
+  </SwiperSlide>
+))}
+
         </Swiper>
         {/* Botões de navegação posicionados lateralmente e centralizados verticalmente */}
         <Button
@@ -129,8 +167,8 @@ const CategoryCarousel = () => {
         <Typography sx={{ fontSize: '20px' }}>
           Dê uma olhada no nosso catálogo completo
         </Typography>
-        <CustomButton>
-          Ver Catálogo
+        <CustomButton onClick={handleDownloadPDF}>
+                    Ver Catálogo
         </CustomButton>
       </Box>
     </Container>

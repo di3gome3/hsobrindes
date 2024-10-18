@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 
-export default function CustomButton({ children }) { 
+export default function CustomButton({ children, ...props }) {
     return (
         <Button
             sx={{
@@ -12,8 +12,9 @@ export default function CustomButton({ children }) {
                 height: '52px',
                 fontSize: '16px'
             }}
+            {...props}
         >
-            {children} 
+            {children}
         </Button>
     );
 }

@@ -5,7 +5,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
 const Banner = () => {
-  const mockImage = 'https://www.marcabrindes.net.br/content/interfaces/cms/userfiles/produtos/banner-canecas-1920x625-401.jpg'; // URL da imagem mockada
+  const mockImages = [
+    'https://www.marcabrindes.net.br/content/interfaces/cms/userfiles/produtos/banner-canecas-1920x625-401.jpg',
+    'https://www.xbzbrindes.com.br/img/banner/bannerprodutoamamos_30d14784B_1920x600px_2.jpg',
+    'https://www.marcabrindes.net.br/content/interfaces/cms/userfiles/produtos/banner-canecas-1920x625-401.jpg'
+  ]; // Array de URLs das imagens mockadas
+
   return (
     <Container fixed>
       <style jsx global>
@@ -62,38 +67,40 @@ const Banner = () => {
         autoplay={{ delay: 2500 }}
         style={{ width: '100%', height: 'auto', borderRadius: '30px' }} // Ajuste de borda no Swiper
       >
-        <SwiperSlide>
-          <Box
-            sx={{
-              height: {
-                xs: 120,  // Altura para xs
-                sm: 160,  // Altura para sm
-                md: 220,  // Altura para md
-                lg: 320,  // Altura para lg
-                xl: 380   // Altura para xl
-              },
-              width: '100%',
-              px: 0,
-              position: 'relative',
-              overflow: 'hidden',
-              borderRadius: '30px',  // Ajuste de borda no Box
-              '&::before': {
-                content: '""',
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 1,
-                bottom: 5,
-                borderRadius: '30px',  // Ajuste de borda no pseudo-elemento ::before
-                backgroundImage: `url(${mockImage})`,
-                backgroundSize: 'contain',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center 50%',
-                transform: 'scaleX(1)',
-              },
-            }}
-          />
-        </SwiperSlide>
+        {mockImages.map((image, index) => (
+          <SwiperSlide key={index}>
+            <Box
+              sx={{
+                height: {
+                  xs: 120,  // Altura para xs
+                  sm: 160,  // Altura para sm
+                  md: 220,  // Altura para md
+                  lg: 320,  // Altura para lg
+                  xl: 380   // Altura para xl
+                },
+                width: '100%',
+                px: 0,
+                position: 'relative',
+                overflow: 'hidden',
+                borderRadius: '30px',  // Ajuste de borda no Box
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 1,
+                  bottom: 5,
+                  borderRadius: '30px',  // Ajuste de borda no pseudo-elemento ::before
+                  backgroundImage: `url(${image})`,
+                  backgroundSize: 'contain',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'center 50%',
+                  transform: 'scaleX(1)',
+                },
+              }}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </Container>
   );
