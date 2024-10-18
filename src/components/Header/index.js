@@ -70,7 +70,7 @@ export default function Header() {
                 <SwiperSlide>
                     <Box
                         component="img"
-                        src="https://xbzbrindes.com.br/img/categorias/tema/banner_outubro-rosa-banner_1920x625px.jpg"
+                        src="https://www.xbzbrindes.com.br/img/categorias/tema/banner_BANNER.jpg"
                         alt="Banner Outubro Rosa"
                         sx={{
                             width: '100%',
