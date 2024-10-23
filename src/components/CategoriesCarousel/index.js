@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
@@ -8,7 +8,7 @@ import 'swiper/css/navigation'; // Import navigation styles
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import CustomButton from '../Button';
-import Link from 'next/link'
+import Link from 'next/link';
 
 const categories = [
   { name: 'Canecas', image: 'https://www.xbzbrindes.com.br/timthumb/timthumb.php?src=/img/produtos/3/Caneca-Magica-de-Ceramica-350ml-VERMELHO-13598-1637768542.jpg&w=652' },
@@ -25,21 +25,18 @@ const categories = [
   { name: 'Kit Churrasco e Queijo', image: 'https://www.xbzbrindes.com.br/img/produtos/3/Kit-Queijo-2-Pecas-20833-1727877921.jpg' },
 ];
 
-
-
 const CategoryCarousel = () => {
-  const whatsappNumber = '85985536208'; // Substitua pelo número real
+  const whatsappNumber = '+558899680514'; // Substitua pelo número real
 
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const pdfUrl = '/pdfs/catalogo.pdf'; // Caminho correto para acessar o PDF
 
+  const [navigationReady, setNavigationReady] = useState(false);
 
   useEffect(() => {
-    if (prevRef.current && nextRef.current) {
-      prevRef.current.style.display = 'block';
-      nextRef.current.style.display = 'block';
-    }
+    // Após o componente montar, definir que os refs estão prontos
+    setNavigationReady(true);
   }, []);
 
   const handleDownloadPDF = () => {
@@ -67,9 +64,15 @@ const CategoryCarousel = () => {
           spaceBetween={20}
           slidesPerView={4}
           autoplay={{ delay: 3000, disableOnInteraction: false }} // Configuração do autoplay (3 segundos)
-          navigation={{
+          navigation={navigationReady ? {
             prevEl: prevRef.current,
             nextEl: nextRef.current,
+          } : false}
+          onBeforeInit={(swiper) => {
+            if (navigationReady) {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+            }
           }}
           breakpoints={{
             // Definições para responsividade
@@ -87,62 +90,67 @@ const CategoryCarousel = () => {
             },
           }}
           onSwiper={(swiper) => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
-            swiper.navigation.init();
-            swiper.navigation.update();
+            if (navigationReady) {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+              swiper.navigation.destroy(); // Destrói a navegação anterior
+              swiper.navigation.init(); // Re-inicializa a navegação
+              swiper.navigation.update();
+            }
           }}
         >
-
-{categories.map((category, index) => (
-  <SwiperSlide key={index}>
-    <Link
-      href={getWhatsAppLink(category.name)} // Chama a função passando o nome da categoria
-      passHref
-      legacyBehavior // Garantindo que o link funcione bem como um wrapper sem breaking changes
-    >
-      <a target="_blank" style={{ textDecoration: 'none', color: 'inherit' }}>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Box
-            sx={{
-              width: 150,
-              height: 150,
-              borderRadius: '50%',
-              overflow: 'hidden',
-              marginBottom: 2,
-            }}
-          >
-            <img
-              src={category.image}
-              alt={category.name}
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            />
-          </Box>
-          <Typography variant="body1">{category.name}</Typography>
-        </Box>
-      </a>
-    </Link>
-  </SwiperSlide>
-))}
-
+          {categories.map((category, index) => (
+            <SwiperSlide key={index}>
+              <Link
+                href={getWhatsAppLink(category.name)} // Chama a função passando o nome da categoria
+                passHref
+                legacyBehavior // Garantindo que o link funcione bem como um wrapper sem breaking changes
+              >
+                <a target="_blank" style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: 150,
+                        height: 150,
+                        borderRadius: '50%',
+                        overflow: 'hidden',
+                        marginBottom: 2,
+                      }}
+                    >
+                      <img
+                        src={category.image}
+                        alt={category.name}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
+                    </Box>
+                    <Typography variant="body1">{category.name}</Typography>
+                  </Box>
+                </a>
+              </Link>
+            </SwiperSlide>
+          ))}
         </Swiper>
         {/* Botões de navegação posicionados lateralmente e centralizados verticalmente */}
         <Button
           ref={prevRef}
           sx={{
             position: 'absolute',
-            top: '60%',
+            top: '50%',
             left: -20, // Ajuste para afastar o botão da imagem
             transform: 'translateY(-50%)',
             zIndex: 2,
             minWidth: 'auto',
             color: 'black',
+            backgroundColor: 'rgba(255, 255, 255, 0.7)', // Adiciona fundo para melhor visibilidade
+            '&:hover': {
+              backgroundColor: 'rgba(255, 255, 255, 1)',
+            },
           }}
         >
           <ArrowBackIosNewIcon />
@@ -151,12 +159,16 @@ const CategoryCarousel = () => {
           ref={nextRef}
           sx={{
             position: 'absolute',
-            top: '60%',
+            top: '50%',
             right: -20, // Ajuste para afastar o botão da imagem
             transform: 'translateY(-50%)',
             zIndex: 2,
             minWidth: 'auto',
             color: 'black',
+            backgroundColor: 'rgba(255, 255, 255, 0.7)', // Adiciona fundo para melhor visibilidade
+            '&:hover': {
+              backgroundColor: 'rgba(255, 255, 255, 1)',
+            },
           }}
         >
           <ArrowForwardIosIcon />
@@ -168,7 +180,7 @@ const CategoryCarousel = () => {
           Dê uma olhada no nosso catálogo completo
         </Typography>
         <CustomButton onClick={handleDownloadPDF}>
-                    Ver Catálogo
+          Ver Catálogo
         </CustomButton>
       </Box>
     </Container>

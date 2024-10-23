@@ -7,7 +7,7 @@ import { Autoplay } from 'swiper/modules'; // Importa o módulo Autoplay
 import CustomButton from '../Button';
 
 export default function ProductsSection() {
-  const whatsappNumber = '85985536208'; // Substitua pelo número real
+  const whatsappNumber = '+558899680514'; // Substitua pelo número real
 
   const getWhatsAppLink = (productName) => {
     const message = `Olá, vim pelo site e estou interessado nas ${productName}`;

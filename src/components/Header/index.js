@@ -1,23 +1,32 @@
 'use client';
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+// Remova ou mantenha esta linha se ainda precisar dos estilos de navegação
+// import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules'; // Importa os módulos necessários
+import { Autoplay, Pagination } from 'swiper/modules'; // Remova 'Navigation' daqui
 
 export default function Header() {
     return (
-        <Box sx={{ width: '100%', height: {md: '70vh', xs: '20vh'}, mt: {md: 0, xs: '70px'}, bgcolor: '#A92529' }}>
+        <Box
+            sx={{
+                width: '100%',
+                height: { md: '70vh', xs: '20vh' },
+                mt: { md: '70px', xs: '70px' },
+                bgcolor: '#A92529'
+            }}
+        >
             <Swiper
                 spaceBetween={0}
                 slidesPerView={1}
-                modules={[Autoplay, Pagination, Navigation]} // Adiciona os módulos
-                autoplay={{ delay: 3000, disableOnInteraction: false }} // Configuração do autoplay (3 segundos)
-                loop={true} // Faz o slider em loop
-                pagination={{ clickable: true }} // Adiciona paginação clicável
-                navigation={true} // Adiciona botões de navegação
-                style={{ height: '100%' }} // Garante que o Swiper ocupe 100% da altura do Container
+                modules={[Autoplay, Pagination]} // Remova 'Navigation' daqui
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                loop={true}
+                pagination={{ clickable: true }}
+                // Remova ou comente a linha abaixo para desabilitar a navegação
+                // navigation={true}
+                style={{ height: '100%' }}
             >
                 <SwiperSlide>
                     <Box
@@ -27,7 +36,7 @@ export default function Header() {
                         sx={{
                             width: '100%',
                             height: '100%',
-                            objectFit: 'cover', // Faz a imagem cobrir todo o espaço do slide
+                            objectFit: 'cover',
                         }}
                     />
                 </SwiperSlide>
@@ -35,7 +44,7 @@ export default function Header() {
                     <Box
                         component="img"
                         src="https://www.xbzbrindes.com.br/img/banner/bannerprodutoamamos_30d14784B_1920x600px_2.jpg"
-                        alt="Banner Outubro Rosa"
+                        alt="Banner Produto Amamos"
                         sx={{
                             width: '100%',
                             height: '100%',
@@ -47,7 +56,7 @@ export default function Header() {
                     <Box
                         component="img"
                         src="https://www.xbzbrindes.com.br/img/categorias/tema/banner_nov%20blue%20dif.jpg"
-                        alt="Banner Outubro Rosa"
+                        alt="Banner Nov Blue Dif"
                         sx={{
                             width: '100%',
                             height: '100%',
@@ -59,7 +68,7 @@ export default function Header() {
                     <Box
                         component="img"
                         src="https://www.xbzbrindes.com.br/img/categorias/tema/banner_COZINHA-min.jpg"
-                        alt="Banner Outubro Rosa"
+                        alt="Banner Cozinha"
                         sx={{
                             width: '100%',
                             height: '100%',
@@ -71,7 +80,7 @@ export default function Header() {
                     <Box
                         component="img"
                         src="https://www.xbzbrindes.com.br/img/categorias/tema/banner_BANNER.jpg"
-                        alt="Banner Outubro Rosa"
+                        alt="Banner Principal"
                         sx={{
                             width: '100%',
                             height: '100%',

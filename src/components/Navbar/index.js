@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { AppBar, Container, Toolbar, IconButton, Drawer, List, ListItem, ListItemText, Box } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
+import Image from 'next/image'; // Importa o componente Image do Next.js
 
 export default function Navbar() {
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -72,17 +73,15 @@ export default function Navbar() {
                         {/* Espaço central para outros elementos (como título) */}
                         <Box sx={{ flexGrow: 1 }} />
 
-                        {/* Logo ao lado direito */}
-                        <Box
-                            component="img"
-                            src="https://s3-alpha-sig.figma.com/img/ddc9/1627/350ebd76932e542cec9bd74833f234dd?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=eldRaR94DdfGVwbKUJUFhNcj5nHHl8hOISZrcTDm7bOBFNvhZsDZyqRAPi3EwsqOvqsX3Hok5ooyt7-3sCUHSWn10Wwvwob6saaQxfwQMiONUDeinopvnDha5woTMzVKQLWiR93EUBkuYq8hioWrINFToz5L6ujuP8BjdHnWOpU8f49wxphRP9auUwgwt6xmcDKEcyEMCPpQGqeZkBiYWuWCCxowi~oxK6vvOd-yh57Y~8UQUGB0-PC3D7RqKiwZpjg0zXRyYvVrkJzO68cVyaApGSn~TPlnmGIjuIS~cvyDsCda9CkeNVp~w9BNzegbndm1pwQiuBXi~W57tLa1eA__"
+                        {/* Logo ao lado direito usando o componente Image do Next.js */}
+                        <Image
+                            src="/pdfs/hsologo.svg" // Caminho relativo a partir da pasta public
                             alt="Logo"
-                            sx={{
-                                height: 75, // Altura da logo ajustada para alinhamento com o menu
-                                width: 'auto',
+                            width={150} // Defina a largura desejada
+                            height={75} // Defina a altura desejada
+                            style={{
                                 cursor: 'pointer',
-                                alignSelf: 'center', // Centraliza verticalmente no toolbar
-                                mb: 0, // Remoção do margin-bottom
+                                alignSelf: 'center',
                             }}
                         />
                     </Toolbar>

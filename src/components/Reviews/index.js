@@ -4,23 +4,23 @@ import StarIcon from '@mui/icons-material/Star';
 
 const reviews = [
   {
-    name: 'Bruno',
-    feedback: 'Atendimento excelente e produto de alta qualidade!',
+    name: 'Márcia - Faculdade Nilton Lins',
+    feedback: 'Acabei de receber meu pedido. Ameiiiiii e irei encomendar outros itens sim🥰💖🫰🏽🫶🏽👏🏽. Chegou a tempo e foi precisa no envio. Muito obrigada',
     avatar: 'https://s3-alpha-sig.figma.com/img/61f2/8021/8da8de347ca2c5ae773b0358a346a9f9?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TmzibVIXh8xAcPLxXpNwRgmEtElnJ2NYPAzI9em2yYq51veJX2p3iW4r-BG0qE8~F~nVQao5~vh7szIXNA~63WqSjCscuet0p2DIxL-~aEvgGtmUSfA40qk0nQ~5lO-T~wueGIZD~2E0~XqtjgcGXA72ZjNe5ELxU4wbRadJYmbXSljvkXUMfDnmxeWPmxiR4zhFULK6enY-EdJUDoKpdn1FoX~rLD6aSi7Wj1xh01g6f1qW27o8Jg9HeRZY5vD9G3NVIRN6B93Fs6KVkAlfD2-LmNg-A8BThhY6lrNyxg9B~690YHBHjeIbU~niTnqwpntfFGnFb8yqHWi85fiLoQ__', // URL da imagem do avatar
     rating: 5,
   },
   {
-    name: 'Bruno',
-    feedback: 'Atendimento excelente e produto de alta qualidade!',
+    name: 'Gizela - Gizela Studio',
+    feedback: 'Janny chegaram!! Não abri todos ainda mas amei muito! Obrigada ! 🧡',
     avatar: 'https://s3-alpha-sig.figma.com/img/61f2/8021/8da8de347ca2c5ae773b0358a346a9f9?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TmzibVIXh8xAcPLxXpNwRgmEtElnJ2NYPAzI9em2yYq51veJX2p3iW4r-BG0qE8~F~nVQao5~vh7szIXNA~63WqSjCscuet0p2DIxL-~aEvgGtmUSfA40qk0nQ~5lO-T~wueGIZD~2E0~XqtjgcGXA72ZjNe5ELxU4wbRadJYmbXSljvkXUMfDnmxeWPmxiR4zhFULK6enY-EdJUDoKpdn1FoX~rLD6aSi7Wj1xh01g6f1qW27o8Jg9HeRZY5vD9G3NVIRN6B93Fs6KVkAlfD2-LmNg-A8BThhY6lrNyxg9B~690YHBHjeIbU~niTnqwpntfFGnFb8yqHWi85fiLoQ__',
     rating: 5,
   },
-  {
-    name: 'Bruno',
-    feedback: 'Atendimento excelente e produto de alta qualidade!',
-    avatar: 'https://s3-alpha-sig.figma.com/img/61f2/8021/8da8de347ca2c5ae773b0358a346a9f9?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TmzibVIXh8xAcPLxXpNwRgmEtElnJ2NYPAzI9em2yYq51veJX2p3iW4r-BG0qE8~F~nVQao5~vh7szIXNA~63WqSjCscuet0p2DIxL-~aEvgGtmUSfA40qk0nQ~5lO-T~wueGIZD~2E0~XqtjgcGXA72ZjNe5ELxU4wbRadJYmbXSljvkXUMfDnmxeWPmxiR4zhFULK6enY-EdJUDoKpdn1FoX~rLD6aSi7Wj1xh01g6f1qW27o8Jg9HeRZY5vD9G3NVIRN6B93Fs6KVkAlfD2-LmNg-A8BThhY6lrNyxg9B~690YHBHjeIbU~niTnqwpntfFGnFb8yqHWi85fiLoQ__',
-    rating: 5,
-  },
+  // {
+  //   name: 'Bruno',
+  //   feedback: 'Atendimento excelente e produto de alta qualidade!',
+  //   avatar: 'https://s3-alpha-sig.figma.com/img/61f2/8021/8da8de347ca2c5ae773b0358a346a9f9?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TmzibVIXh8xAcPLxXpNwRgmEtElnJ2NYPAzI9em2yYq51veJX2p3iW4r-BG0qE8~F~nVQao5~vh7szIXNA~63WqSjCscuet0p2DIxL-~aEvgGtmUSfA40qk0nQ~5lO-T~wueGIZD~2E0~XqtjgcGXA72ZjNe5ELxU4wbRadJYmbXSljvkXUMfDnmxeWPmxiR4zhFULK6enY-EdJUDoKpdn1FoX~rLD6aSi7Wj1xh01g6f1qW27o8Jg9HeRZY5vD9G3NVIRN6B93Fs6KVkAlfD2-LmNg-A8BThhY6lrNyxg9B~690YHBHjeIbU~niTnqwpntfFGnFb8yqHWi85fiLoQ__',
+  //   rating: 5,
+  // },
 ];
 
 const ReviewsSection = () => {
