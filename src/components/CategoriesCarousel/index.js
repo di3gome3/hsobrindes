@@ -175,8 +175,8 @@ const CategoryCarousel = () => {
         </Button>
       </Box>
       {/* Texto adicional e botão abaixo do carrossel */}
-      <Box sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginTop: 4, mb: 2 }}>
-        <Typography sx={{ fontSize: '20px' }}>
+      <Box sx={{ display: 'flex', flexDirection: {md: 'row', xs: 'column'}, alignItems: {md: 'flex-end', xs: 'center'}, justifyContent: 'space-between', marginTop: 4, mb: 2 }}>
+        <Typography sx={{ fontSize: {md: '20px', xs: '16px'}, mb: '15px' }}>
           Dê uma olhada no nosso catálogo completo
         </Typography>
         <CustomButton onClick={handleDownloadPDF}>
