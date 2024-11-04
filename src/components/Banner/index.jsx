@@ -25,7 +25,7 @@ const Banner = () => {
           }
 
           .swiper-pagination-bullet-active {
-            background-color: black !important;
+            background-color: #A92529 !important;
           }
 
           .swiper-button-prev, .swiper-button-next {
@@ -59,13 +59,13 @@ const Banner = () => {
         `}
       </style>
       <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
+        modules={[Navigation, Autoplay]}
         spaceBetween={0}
         slidesPerView={1}
         navigation
         pagination={{ clickable: true, className: 'swiper-pagination-left' }}
         autoplay={{ delay: 2500 }}
-        style={{ width: '100%', height: 'auto', borderRadius: '30px' }} // Ajuste de borda no Swiper
+        style={{ width: '100%', height: 'auto', borderRadius: '30px', marginBottom: 10 }} // Ajuste de borda no Swiper
       >
         {mockImages.map((image, index) => (
           <SwiperSlide key={index}>

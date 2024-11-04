@@ -2,8 +2,7 @@
 
 "use client";
 import React from 'react';
-import { Box, Stack, IconButton, Container, Typography, Link as MUILink } from '@mui/material';
-import FacebookIcon from '@mui/icons-material/Facebook';
+import { Box, Stack, IconButton, Container, Typography } from '@mui/material';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import EmailIcon from '@mui/icons-material/Email';
@@ -23,6 +22,11 @@ const Footer = () => {
             <EmailIcon sx={{ color: "white" }} />
           </IconButton>
         </Stack>
+      
+        <Typography variant="body2" color="white" align="center" sx={{ mt: 1 }}>
+          Rua Oito, 2398 - Residencial Maracanaú, Cep: 61.913-345
+        </Typography>
+
         <Typography variant="body2" color="white" align="center" sx={{ mt: 2 }}>
           © {new Date().getFullYear()} HSO Brindes. Todos os direitos reservados.
         </Typography>

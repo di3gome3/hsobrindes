@@ -5,6 +5,7 @@ import CreateSection from "@/components/Create Section";
 import Header from "@/components/Header";
 import ProductsSection from "@/components/ProductsSection";
 import ReviewsSection from "@/components/Reviews";
+import TrustedCompanies from "@/components/TrustedCompanies";
 
 
 export default function Home() {
@@ -14,8 +15,12 @@ export default function Home() {
     {/* <AboutSection /> */}
     {/* <CreateSection /> */}
     <ProductsSection />
+    
     <CategoryCarousel/>
+   
     <ReviewsSection/>
+ 
+    <TrustedCompanies/>
     <Banner/>
     </>
   );
